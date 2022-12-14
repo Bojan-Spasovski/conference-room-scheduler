@@ -29,15 +29,19 @@
       <form id="form" action="">
         <div class="input-elements">
           <label for="name">Username:</label>
-          <input type="text" name="name" id="name" required />
-          <span></span>
+          <div class="checkbox-row">
+            <input type="text" name="name" id="name" required />
+            <span></span>
+          </div>
         </div>
 
         <div class="input-elements">
           <label for="dateTime">Appointment Date and Time:</label>
-          <input type="datetime-local" name="date" id="dateTime" min="2022-12-11T08:30" max="2023-12-16T16:30"
-            step="300" required />
-          <span></span>
+          <div class="checkbox-row">
+            <input type="datetime-local" name="date" id="dateTime" min="2022-12-11T08:30" max="2023-12-16T16:30"
+              step="300" required />
+            <span></span>
+          </div>
         </div>
         <div class="input-elements">
           <label for="duration">Appointment Duration:</label>

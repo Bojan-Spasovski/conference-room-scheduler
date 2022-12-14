@@ -49,6 +49,12 @@ form {
   width: 50%;
 }
 
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
 label {
   padding: 0.5rem 0;
 }
@@ -66,21 +72,15 @@ input:focus {
 }
 
 input:invalid + span:after {
-  position: relative;
-  bottom: 2.2rem;
-  left: 6.6rem;
   content: "✖";
   color: red;
-  padding-left: 5px;
+  padding-left: 0.5rem;
 }
 
 input:valid + span:after {
-  position: relative;
-  bottom: 2.2rem;
-  left: 6.6rem;
   content: "✓";
   color: green;
-  padding-left: 5px;
+  padding-left: 0.5rem;
 }
 
 #duration {
