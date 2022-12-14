@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/script.js" defer></script>
+  <title>Conference Room Scheduler</title>
+</head>
+
+<body>
+
+  <div id="background-image">
+    <img src="/img/iocenters-2673327_960_720.jpg" alt="">
+  </div>
+
+  <header>
+    <h1 id="main-headline">Conference Room Scheduler</h1>
+  </header>
+
+  <main>
+    <div class="main">
+      <form id="form" action="">
+        <div class="input-elements">
+          <label for="name">Username:</label>
+          <input type="text" name="name" id="name" required />
+          <span></span>
+        </div>
+
+        <div class="input-elements">
+          <label for="dateTime">Appointment Date and Time:</label>
+          <input type="datetime-local" name="date" id="dateTime" min="2022-12-11T08:30" max="2023-12-16T16:30"
+            step="300" required />
+          <span></span>
+        </div>
+        <div class="input-elements">
+          <label for="duration">Appointment Duration:</label>
+          <select name="duration" id="duration" title="duration-selection" required>
+            <option value="15">15 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="45">45 minutes</option>
+            <option value="60">1 hour</option>
+            <option value="75">1 hour 15 minutes</option>
+          </select>
+          <span></span>
+        </div>
+        <input type="submit" value="Book Appointment" id="book-btn" />
+      </form>
+      <div id="display"></div>
+    </div>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(206, 206, 206);
+  font-family: "Roboto Mono", monospace;
+  color: aliceblue;
+}
+
+#background-image img {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(10%);
+}
+
+header {
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 auto;
+  padding: 2rem 0 2rem 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-elements {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin: 1rem 0;
+  width: 50%;
+}
+
+label {
+  padding: 0.5rem 0;
+}
+
+input {
+  color: aliceblue;
+  background-color: rgba(212, 212, 212, 0.5);
+  padding: 0.4rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+}
+
+input:focus {
+  background-color: rgba(212, 212, 212, 0.5);
+}
+
+input:invalid + span:after {
+  position: relative;
+  bottom: 2.2rem;
+  left: 6.6rem;
+  content: "✖";
+  color: red;
+  padding-left: 5px;
+}
+
+input:valid + span:after {
+  position: relative;
+  bottom: 2.2rem;
+  left: 6.6rem;
+  content: "✓";
+  color: green;
+  padding-left: 5px;
+}
+
+#duration {
+  padding: 0.3rem;
+  color: aliceblue;
+  background-color: rgba(212, 212, 212, 0.5);
+  border-radius: 5px;
+}
+
+option {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+#book-btn {
+  width: 12.5rem;
+  padding: 0.3rem;
+  margin: 1.5rem 0 0 0;
+  border-radius: 5px;
+  font-family: "Roboto Mono", monospace;
+  background-color: rgb(70, 0, 161);
+}
+
+#book-btn:hover {
+  background-color: rgb(111, 0, 255);
+}
+
+/* Center tables for demo */
+table {
+  margin: 0 auto;
+}
+
+/* Default Table Style */
+table {
+  margin-top: 3rem;
+  color: rgb(0, 0, 0);
+  background: rgba(231, 231, 231, 0.9);
+  border: 1px solid grey;
+  text-align: center;
+  font-size: 12pt;
+  border-collapse: collapse;
+  width: 50%;
+}
+table thead th,
+table tfoot th {
+  color: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+}
+table caption {
+  padding: 0.5em;
+}
+table th,
+table td {
+  padding: 0.5em;
+  border: 1px solid rgb(37, 37, 37);
+}
+
+@media screen and (max-width: 500px) {
+  table {
+    font-size: 6pt;
+  }
+}
