@@ -4,21 +4,30 @@ function json2Table(json) {
 
   let rows = json
     .map((row) => {
-      let tds = cols.map((col) => `<td>${row[col]}</td>`).join("");
+      let tds = cols
+        .map((col) => `<td  class="table-fields">${row[col]}</td>`)
+        .join("");
       return `<tr>${tds}</tr>`;
     })
     .join("");
 
   //building the table
   const table = `
-      <table>
-        <thead>
-          <tr><th>Name</th><th>Date</th><th>Start</th><th>Duration (minutes)</th><th>End</th></tr>
-        <thead>
-        <tbody>
-          ${rows}
-        <tbody>
-      <table>`;
+  <table>
+    <thead>
+      <tr>
+        <th>Appointment Id</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Start</th>
+        <th>Duration (minutes)</th>
+        <th>End</th>
+      </tr>
+    <thead>
+    <tbody>
+      ${rows}
+    <tbody>
+  <table>`;
 
   return table;
 }
@@ -37,10 +46,12 @@ window.addEventListener("load", () => {
   }
 
   const form = document.getElementById("form");
+  const formRemove = document.getElementById("remove-booking");
   const name = document.getElementById("name");
   const dateTime = document.getElementById("dateTime");
   const duration = document.getElementById("duration");
 
+  // Time functions
   const getDateTime = (slot) => {
     return slot.split("T");
   };
@@ -81,6 +92,13 @@ window.addEventListener("load", () => {
     return !overlap;
   };
 
+  // Generate somewhat unique id by putting togather local date and random number
+  const uniqueId = () => {
+    const dateString = Date.now().toString(36);
+    const randomness = Math.random().toString(36);
+    return dateString + randomness;
+  };
+
   formSubmit = (e) => {
     e.preventDefault();
     const bookedName = name.value;
@@ -93,6 +111,7 @@ window.addEventListener("load", () => {
     );
 
     const booking = {
+      number: uniqueId(),
       name: bookedName,
       date: bookedDate,
       startTime: bookedTime,
@@ -117,5 +136,44 @@ window.addEventListener("load", () => {
     }
   };
 
+  //Removing Appointment
+  removeBooking = (e) => {
+    e.preventDefault();
+    const bookingNumber = document.getElementById("booking-number").value;
+    const bookingIndex = bookings.findIndex(
+      (item) => item.number === bookingNumber
+    );
+    console.log(bookingIndex);
+    if (bookingIndex !== -1) {
+      bookings = bookings.filter((item) => item.number !== bookingNumber);
+      localStorage.setItem("bookings", JSON.stringify(bookings));
+      location.reload();
+    } else {
+      alert("Booking with that number doesn't exist");
+    }
+    console.log(bookings);
+  };
+
+  //Set Title Attribute
+  const id = document.querySelectorAll("td:first-child");
+  id.forEach((appointmentId) => {
+    appointmentId.setAttribute("title", "Copy Appointment Id");
+  });
+
   form.addEventListener("submit", formSubmit);
+  formRemove.addEventListener("submit", removeBooking);
+
+  //Copying Appointment ID
+  const copyEntry = document.querySelectorAll("td:first-child");
+
+  copyEntry.forEach((entry) => {
+    entry.addEventListener("click", () => {
+      const idValue = entry.textContent;
+      const cb = navigator.clipboard;
+
+      cb.writeText(idValue).then(() => {
+        alert("ID Copied");
+      });
+    });
+  });
 });
