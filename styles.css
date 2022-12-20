@@ -139,7 +139,8 @@ table td {
 }
 
 #remove-booking {
-  margin: 1rem;
+  margin: 0.5rem auto 0 auto;
+  padding: 0 0 1rem 0;
 }
 
 #remove-booking .checkbox-row {
